@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}: Explore the world{% endblock %}
+
+{% block main %}
+<div class="row">
+    <div class="col-md-9">
+        <div>
+            <form action="/explore" method="post">
+                <div class="input-group">
+                    <input class="form-control" name="lookup" type="text" autocomplete="off" placeholder="Type in a keyword"> <!-- Keyword search bar -->
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <select class ="form-control" name="genre"> <!-- genre selection dropdown -->
+                        <option disabled selected value"">Select a genre you'd like to browse:</option>
+                        <option value="Cheerful">Cheerful</option>
+                        <option value="Exciting">Exciting</option>
+                        <option value="Funny">Funny</option>
+                        <option value="Poetic">Poetic</option>
+                        <option value="Storytime">Storytime</option>
+                        <option value="Sad">Sad</option>
+                        <option value="Depressing">Depressing</option>
+                        <option value="Angry">Angry</option>
+                        <option value="Random">Random</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" style="background-color:#7bb5b1; border:none" type="submit">&#128269;</button>
+                    </div>
+                </div>
+            </form>
+            <p style="text-align:center; margin-top:5px; color:grey; font-size:15px; font-weight:200"> {{ message }} </p> <!-- possible error messages displayed here -->
+        </div>
+
+        <div style="margin-top:50px">
+            {% for posts in explore %} <!-- Postbox Format -->
+                <div class="post">
+                    <p style="display:inline">
+                    {{ posts.user }} <!-- Post username -->
+                    <form action="/explore" method="post">
+                        <button name="follow" class="postbtn" style="border:none; border-radius:8px; background-color:#bee6e3" type="submit" value='{{ posts.user_id }}'>Follow</button> <!-- Follow user -->
+                    </form>
+                </p>
+                    <hr style="border-top:3px solid #bbb">
+                    <p style="text-align:center">
+                        "{{ posts.journal }}" <!-- Content's of post -->
+                    </p>
+                </div>
+                <p style="margin: 12px 0 30px 25%">{{ posts.date }} ~ {{ posts.genre }}</p> <!-- Date and genre of post -->
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-3" style="border:2px solid black; left:100px; min-height:470px; border-color:#afdbd8"> <!-- Mental health/self help articles -->
+        <h2 style="text-align:center; margin-top:10px; color:#afdbd8"><b>Taking care</b></h2>
+        <ul style="margin-top:20px; color:#afdbd8">
+            <li>
+                <a href="https://www.healthline.com/health/benefits-of-reading-books" style="color:#afdbd8"><b>Healthline: The benefits of reading</b></a>
+            </li>
+            <li>
+                <a href="https://www.nytimes.com/2021/02/09/well/mind/covid-depression-anxiety.html" style="color:#afdbd8"><b>New york Times: Depression and Anxiety during the Pandemic</b></a>
+            </li>
+            <li>
+                <a href="https://www.urmc.rochester.edu/encyclopedia/content.aspx?ContentID=4552&ContentTypeID=1" style="color:#afdbd8"><b>Journaling for Mental Health</b></a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

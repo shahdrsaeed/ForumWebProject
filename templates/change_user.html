@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}'s Settings{% endblock %}
+{% block main %}
+    <div class="row">
+        <div class="col-md-6" style="width:70%; margin-top:40px">
+            <form action="/settings" method="post"> <!-- change username form -->
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"> <!-- Current username -->
+                </div>
+                <div class="form-group">
+                    <input autocomplete="off" class="form-control" name="new_username" placeholder="New Username" type="text"> <!-- Desired username -->
+                </div>
+                <div class="form-group">
+                    <input class="form-control" name="password" autocomplete="off" placeholder="Password" type="password"> <!-- Password -->
+                </div>
+                <p style="color:grey">{{ message }}</p> <!-- possible error messages displayed here -->
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" style="background-color:#7bb5b1; border:none" type="submit">Change</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

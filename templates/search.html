@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    : Search users
+{% endblock %}
+
+{% block main %}
+    <form autocomplete="off" action="/search" method="post">
+        <!-- Search input -->
+        <div class="input-group">
+            <input type="text" class="form-control" name="search" placeholder="Search for other users">
+            <div class="input-group-append">
+                <button class="btn btn-secondary" style="background-color:#7bb5b1; border:none" type="submit">&#128269;</button>
+            </div>
+        </div>
+    </form>
+    <p style="text-align:center; margin-top:5px; color:grey; font-size:15px; font-weight:200"> {{ message }} </p> <!-- possible error messages displayed here -->
+    <!-- User's found displayed in a table -->
+    <p>
+        <div style="margin-top:10px">
+            <table class="table table-hover">
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td style="text-align:center">{{ user.username }}</td> <!-- Username -->
+
+                            <td></td><td></td><td></td>
+
+                            <td style="text-align:center">
+                                <form action="/search" method="post">
+                                    <button name="follow" style="border:none; border-radius:8px; background-color:#bee6e3" type="submit" value='{{ user.id }}'>follow</button> <!-- Follow user -->
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </p>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}'s Settings{% endblock %}
+
+{% block main %}
+
+    <div>
+        <h3>Account</h3> <!-- Account settings -->
+        <table class="table">
+            <tbody>
+                <tr style="padding:2px">
+                    <td>
+                        <form action="/settings" method="post">
+                            <button name="change_username" style="border:none; background:none" type="submit" value="0">Change Username</button> <!-- Change username/takes you to change_user.html -->
+                        </form>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <form action="/settings" method="post">
+                            <button name="privacy" style="border:none; background:none" type="submit" value='{{ priv_val }}'>Privacy</button> <!-- Change Privacy Setting -->
+                        </form>
+                    </td>
+                    <td style="text-align:right">
+                        <div style="background-color:{{ indicator }}; width:50%; border-radius:15px">&nbsp;</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="color:grey">
+            - When the indicator is Red, your posts will be accesible in the explore page for every user to admire, whether they are following you or not <br>
+            - When the indicator is Green, your posts will only be seen in the feeds of your followers
+        </p>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div>
+        <h3>FAQ</h3> <!-- FAQ section-->
+        <hr style="border-top:1px solid #bbb">
+
+        <table class="table"> <!-- Accordions of Questions-->
+            <tbody>
+                <tr>
+                    <td>
+                        <button class="accordion">Why was Journal Express created?</button>
+                        <div class="panel">
+                            <br>
+                            <p>- Journal Express is an anonymous posting platform to allow your thoughts, feelings, ideas, and written forms of art to be seen by other writting enthusiasts all around the world!</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="accordion">Why cant you comment on people's posts?</button>
+                        <div class="panel">
+                            <br>
+                            <p>- The goal of Journal Express was to create "A diary accessible by everyone", which might sound strange compared to the openness of the platform compared to the secrecy of a diary. To keep to a traditional concept of a diary, I wanted to allow comfort on by letting posts be a brain dump without fear of judgement.</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="accordion">Why can't you like people's posts?</button>
+                        <div class="panel">
+                            <br>
+                            <p>- Likes on the internet can be described as an individual's digital currency. One of my goals was to remove a feeling of external validation, which may lead to holding back of creative endeavors and I want out users to feel free to dedicate making their profiles into their own open-access journal</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <br>
+    <br>
+
+{% endblock %}

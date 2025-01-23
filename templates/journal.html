@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}: Journal Entry{% endblock %}
+
+{% block main %}
+    <div>
+        <p style="text-align:center; font-family:Garamond, serif; color:grey; font-size:20px"> <!-- Journal Express Mission -->
+            Journal express was created to allow you to put your thoughts into words, whether the process results with an information dump
+            or written in beautiful poetry is completely up to you, <b>this is your safe space</b>
+        </p>
+    </div>
+    <br>
+    <form action="/journal" method="post"> <!-- Journal entry textbox -->
+        <div class="form-group">
+            <textarea style="width:80%" class="form-control" autofocus rows="7" placeholder="Enter your daily thoughts :)" name="journal"></textarea>
+        </div>
+        <p style="color:grey">{{ message }}</p> <!-- possible error messages displayed here -->
+        <br>
+        <div> <!-- genre selection -->
+            <p style="font-family:Garamond, serif; color:grey; font-size:18px">
+                { Pick which "genre" matches today's journal }
+            </p>
+            <input type="radio" id="Cheerful" name="genre" value="Cheerful">
+            <label for="Cheerful">Cheerful&emsp;</label>
+            <input type="radio" id="Exciting" name="genre" value="Exciting">
+            <label for="Exciting">Exciting&emsp;</label>
+            <input type="radio" id="Funny" name="genre" value="Funny">
+            <label for="Funny">Funny&emsp;</label>
+            <input type="radio" id="Poetic" name="genre" value="Poetic">
+            <label for="Poetic">Poetic&emsp;</label>
+            <input type="radio" id="Storytime" name="genre" value="Storytime">
+            <label for="Storytime">Storytime&emsp;</label>
+            <input type="radio" id="Sad" name="genre" value="Sad">
+            <label for="Sad">Sad&emsp;</label>
+            <input type="radio" id="Depressing" name="genre" value="Depressing">
+            <label for="Depressing">Depressing&emsp;</label>
+            <input type="radio" id="Angry" name="genre" value="Angry">
+            <label for="Angry">Angry&emsp;</label>
+            <input type="radio" id="Random" name="genre" value="Random">
+            <label for="Random">Random&emsp;</label>
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-secondary" style="background-color:#7bb5b1; border:none" type="submit">Post</button>
+        </div>
+    </form>
+{% endblock %}

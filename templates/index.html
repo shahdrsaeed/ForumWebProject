@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{% endblock %}
+
+{% block main %}
+    <!-- Display all posts from users that the current user follows -->
+    <p style="text-align:center; color:grey; font-size:30px; font-family: Garamond, serif;" >{{ message }}</p> <!-- Message when user doesnt follow anyone or following has no posts -->
+    {% for posts in feed %} <!-- Postbox format loop -->
+        <div class="post">
+            <p>
+                {{ posts.user }} <!-- Username -->
+            </p>
+            <hr style="border-top:3px solid #bbb">
+            <p style="text-align:center">
+                "{{ posts.journal }}" <!-- Content's of post -->
+            </p>
+        </div>
+        <p style="margin: 12px 0 50px 25%">{{ posts.date }} ~ {{ posts.genre }}</p> <!-- Date of post creation -->
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}: Personal profile{% endblock %}
+
+{% block main %}
+    <p>
+        <h1 style="text-align:center">Welcome {{ username }}</h1> <!-- Display profile's username -->
+    </p>
+    <p> <!-- Follower and Following Count -->
+        <h6 style="text-align:center"><button name="follow" onclick="followers()" style="border:none; background-color:#f0f9ff">{{ followers }} followers</button> ~ <button name="follow" onclick="following()" style="border:none; background-color:#f0f9ff">{{ following }} following</button></h6>
+    </p>
+    <div id="followslist"> <!-- Display users followed -->
+            <table class="table table-borderless" style="margin-top:10px">
+                <tbody>
+                    {% for following in followinglist %} <!-- Following list loop -->
+                        <tr>
+                            <td style="text-align:center">{{ following.follows }}</td> <!-- Following username -->
+                            <td style="text-align:center">
+                                <form action="/profile" method="post">
+                                    <button name="unfollow" style="border:none; border-radius:8px; background-color:#bee6e3" type="submit" value='{{ following.follow_user_id }}'>unfollow</button> <!-- Unfollow user -->
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+    <div id="followerlist"> <!-- Display followers -->
+            <table class="table table-borderless" style="margin-top:10px">
+                <tbody>
+                    {% for follower in followerlist %} <!-- Follower list loop -->
+                        <tr>
+                            <td style="text-align:center">{{ follower.profile }}</td> <!-- Follower username -->
+                            <td style="text-align:center">
+                                <form action="/profile" method="post">
+                                    <button name="remove" style="border:none; border-radius:8px; background-color:#bee6e3" type="submit" value='{{ follower.profile_user_id }}'>remove</button> <!-- Remove follower -->
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+    {% for entry in entries %} <!-- Postbox format -->
+        <div class="post" style="margin:30px auto ">
+            <p style="display:inline">
+                {{ entry.genre }} ~ {{ entry.date }} <!-- genre and date of post -->
+                <form action="/profile" method="post">
+                    <button name="delete" class="postbtn" type="submit" value='{{ entry.id }}'>Delete</button> <!-- Delete button -->
+                </form>
+            </p>
+            <hr style="border-top:3px solid #bbb">
+            <p style="text-align:center">
+                "{{ entry.journal }}" <!-- Content of post -->
+            </p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}: Register{% endblock %}
+
+{% block main %}
+    <div style="width:50%">
+        <form action="/register" method="post">
+            <!-- Prompt username -->
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+            </div>
+            <!-- Prompt password -->
+            <div class="form-group">
+                <input autocomplete="off" class="form-control" name="password" placeholder="Password" type="password">
+            </div>
+            <!-- password requirements listed -->
+            <p style="font-size:70%; line-height:2px"> * Minimum 7 characters<p>
+            <p style="font-size:70%; line-height:2px"> * Must include 1 digit<p>
+            <!-- Prompt password confirmation -->
+            <div class="form-group">
+                <input autocomplete="off" class="form-control" name="confirmation" placeholder="Password Confirm" type="password">
+            </div>
+            <p style="color:grey">{{ message }}</p> <!-- possible error messages displayed here -->
+            <p style="font-family:Garamond, serif; color:grey; font-size:18px; ">
+                Already have an account? <a href="/login">Login here</a>.
+            </p>
+            <div class="input-group-append">
+                <button class="btn btn-secondary" style="background-color:#7bb5b1; border:none" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
