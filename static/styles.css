@@ -1,0 +1,158 @@
+/* Website name found in header */
+#name {
+    position: relative;
+    font-family:'fantasy';
+    top: 5px;
+    bottom: 5px;
+    left: 30px;
+}
+
+/* Header bar at top of the page*/
+.header {
+    display: flex;
+    background-color: #afdbd8;
+}
+
+/* Buttons inside header */
+.headerbuttons {
+    position: relative;
+    border: none;
+    background: none;
+    left: 50px;
+    color: #183821;
+    font-weight: 600;
+}
+
+.headerbuttons:hover {
+    text-shadow: 2px 2px 5px grey;
+}
+
+/* Sidebar found when first button in header is clicked when logged in */
+.sidebar {
+    position: absolute;
+    height: 100%;
+    width: 180px;
+    background-color: #a5c9c7;
+    z-index: 9;
+    left: 0;
+    display: none;
+    border-radius: 0 0 30px 0;
+}
+
+/* Contents inside sidebar */
+.sidebar .sidebtn {
+    position: relative;
+    top: 35px;
+    left: 50px;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #4f4f4f;
+}
+
+.sidebar .sidebtn:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Button used to close sidebar */
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    text-decoration: none;
+    margin-left: 50px;
+    color: #4f4f4f;
+}
+
+.sidebar .closebtn:hover {
+    color: black;
+}
+
+/* Search bar aesthetics */
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+#followslist {
+    position: absolute;
+    top: 150px;
+    left: 5%;
+    height: 400px;
+    width: 20%;
+    border-radius:8px;
+    background-color: #f0f9ff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+
+#followerlist {
+    position: absolute;
+    top: 150px;
+    left: 5%;
+    height: 400px;
+    width: 20%;
+    border-radius:8px;
+    background-color: #f0f9ff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+
+/* The look of the posts in the index/home page*/
+.post {
+    min-height: 250px;
+    width: 55%;
+    margin: 0 auto;
+    border: 2px solid #a3a3a3;
+    padding: 15px 40px;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.post .postbtn {
+    position: relative;
+    float: right;
+    bottom: 25px;
+    border: none;
+}
+
+.post .postbtn:hover {
+    text-decoration: underline;
+}
+
+.accordion {
+    background:none;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion:after {
+  content: '\21D2'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\21D3"; /* Unicode character for "minus" sign (-) */
+}
